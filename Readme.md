@@ -79,7 +79,7 @@ Contributions are welcome! If you have ideas for improvements or new features, p
 
 - This project utilizes [LangChain](https://github.com/hwchase17/langchain) for building the AI agent.
 - The AI code generation is powered by Ollama’s ChatOllama interface.
-- Special thanks to the contributors and the open-source community.
+- Special thanks to the open-source community.
 
 
 ## License
