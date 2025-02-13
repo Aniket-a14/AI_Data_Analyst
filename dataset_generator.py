@@ -53,31 +53,31 @@ def fill_template(template):
     instruction = template["instruction_template"]
     code = template["code_template"]
     
-    if "{n}" in instruction or "{n}" in code:
-        n_val = random.choice(n_values)
-        instruction = instruction.replace("{n}", str(n_val))
-        code = code.replace("{n}", str(n_val))
+    # Add validation for required template variables
+    required_vars = {"{n}", "{col}", "{bins}", "{x_col}", "{y_col}"}
+    template_vars = set(v for v in required_vars if v in instruction or v in code)
     
-    if "{col}" in instruction or "{col}" in code:
-        col_val = random.choice(columns)
-        instruction = instruction.replace("{col}", col_val)
-        code = code.replace("{col}", col_val)
+    # Store x_col for reuse in y_col selection
+    x_col = None
     
-    if "{bins}" in instruction or "{bins}" in code:
-        bins_val = random.choice(bins_values)
-        instruction = instruction.replace("{bins}", str(bins_val))
-        code = code.replace("{bins}", str(bins_val))
-    
-    if "{x_col}" in instruction or "{x_col}" in code:
-        x_col = random.choice(columns)
-        instruction = instruction.replace("{x_col}", x_col)
-        code = code.replace("{x_col}", x_col)
-    
-    if "{y_col}" in instruction or "{y_col}" in code:
-        y_candidates = [c for c in columns if c != x_col]
-        y_col = random.choice(y_candidates) if y_candidates else random.choice(columns)
-        instruction = instruction.replace("{y_col}", y_col)
-        code = code.replace("{y_col}", y_col)
+    for var in template_vars:
+        if var == "{n}":
+            val = str(random.choice(n_values))
+        elif var == "{col}":
+            val = random.choice(columns)
+        elif var == "{bins}":
+            val = str(random.choice(bins_values))
+        elif var == "{x_col}":
+            x_col = random.choice(columns)
+            val = x_col
+        elif var == "{y_col}" and x_col:
+            # Ensure y_col is different from x_col when possible
+            val = random.choice([c for c in columns if c != x_col] or columns)
+        else:
+            val = random.choice(columns)
+            
+        instruction = instruction.replace(var, val)
+        code = code.replace(var, val)
     
     return {"instruction": instruction, "code": code}
 

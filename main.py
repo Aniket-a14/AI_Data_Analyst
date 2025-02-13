@@ -3,40 +3,56 @@ from agent import interpret_and_execute
 from feedback_store import FeedbackStore
 
 def main():
-    file_path = input("Enter dataset file path (CSV): ")
-    df = load_dataset(file_path)
-    feedback_store = FeedbackStore()
-    
-    if isinstance(df, str):
-        print(f"Error: {df}")
-        return
-    
-    print("\nDataset loaded successfully!")
-    print(f"Shape of dataset: {df.shape}")
-    print("\nColumns in dataset:")
-    print(df.columns.tolist())
-    print("\nNow you can describe your data analysis task.")
-    
-    while True:
-        instruction = input("\nDescribe your data analysis task (or type 'exit' to quit): ")
-        if instruction.lower() == 'exit':
-            break
-            
-        print("\nProcessing your request...")
-        result, code = interpret_and_execute(instruction, df)
-        print("\nResult:", result)
+    try:
+        file_path = input("Enter dataset file path (CSV): ")
+        df = load_dataset(file_path)
+        feedback_store = FeedbackStore()
         
-        # Get feedback
-        feedback = input("\nWas this result correct? (y/n): ").lower()
-        if feedback in ['y', 'yes']:
-            feedback_store.add_example(instruction, code, True)
-            print("Great! Added to successful examples.")
-        elif feedback in ['n', 'no']:
-            feedback_store.add_example(instruction, code, False)
-            correct_code = input("What would be the correct code? (press enter to skip): ")
-            if correct_code.strip():
-                feedback_store.add_example(instruction, correct_code, True)
-            print("Thank you for the feedback!")
+        if isinstance(df, str):
+            print(f"Error: {df}")
+            return
+        
+        print("\nDataset loaded successfully!")
+        print(f"Shape of dataset: {df.shape}")
+        print("\nColumns in dataset:")
+        print(df.columns.tolist())
+        print("\nType 'help' for available commands or 'exit' to quit.")
+        
+        while True:
+            instruction = input("\nDescribe your data analysis task: ").strip().lower()
+            if instruction == 'exit':
+                break
+            elif instruction == 'help':
+                print("\nAvailable commands:")
+                print("- exit: Quit the program")
+                print("- help: Show this help message")
+                continue
+            
+            print("\nProcessing your request...")
+            result, code = interpret_and_execute(instruction, df)
+            print("\nResult:", result)
+            
+            # Get feedback with error handling
+            while True:
+                feedback = input("\nWas this result correct? (y/n): ").lower()
+                if feedback in ['y', 'yes', 'n', 'no']:
+                    break
+                print("Please enter 'y' or 'n'")
+                
+            if feedback in ['y', 'yes']:
+                feedback_store.add_example(instruction, code, True)
+                print("Great! Added to successful examples.")
+            else:
+                feedback_store.add_example(instruction, code, False)
+                correct_code = input("What would be the correct code? (press enter to skip): ")
+                if correct_code.strip():
+                    feedback_store.add_example(instruction, correct_code, True)
+                print("Thank you for the feedback!")
+                
+    except KeyboardInterrupt:
+        print("\nProgram terminated by user.")
+    except Exception as e:
+        print(f"\nAn error occurred: {e}")
 
 if __name__ == "__main__":
     main()
