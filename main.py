@@ -32,7 +32,6 @@ def main():
             result, code = interpret_and_execute(instruction, df)
             print("\nResult:", result)
             
-            # Get feedback with error handling
             while True:
                 feedback = input("\nWas this result correct? (y/n): ").lower()
                 if feedback in ['y', 'yes', 'n', 'no']:

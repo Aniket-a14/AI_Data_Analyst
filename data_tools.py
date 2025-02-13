@@ -13,7 +13,6 @@ def load_dataset(file_path: Union[str, Path]) -> Union[pd.DataFrame, str]:
         Either a DataFrame if successful, or an error message string
     """
     try:
-        # Convert to Path object for better path handling
         path = Path(file_path)
         
         # Validate file existence

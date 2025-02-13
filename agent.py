@@ -30,53 +30,45 @@ def interpret_and_execute(instruction: str, df: pd.DataFrame) -> tuple[str, str]
     code = response.content.strip()
     
     try:
-        # Extract only the executable code
         code_lines = []
         in_code_block = False
         
         for line in code.split('\n'):
             line = line.strip()
             
-            # Skip empty lines and thinking/explanation text
             if not line or line.startswith(('<think>', 'To ', 'Here', 'This ', 'Alternatively', 'Wait', 'Putting')):
                 continue
                 
-            # Handle markdown code blocks
             if '```' in line:
                 if line.startswith('```'):
                     in_code_block = not in_code_block
                 continue
                 
-            # Only include actual code lines
             if in_code_block or any(code_indicator in line for code_indicator in [
                 'df.', 'print(', 'plt.', 'sns.', 'np.', 'pd.'
             ]):
                 code_lines.append(line)
         
-        # Join the code lines and clean up
         code = '\n'.join(code_lines).strip()
         
-        # If no valid code was found, use the first line that looks like code
         if not code:
             for line in response.content.split('\n'):
                 if any(indicator in line for indicator in ['df.', 'print(', 'plt.']):
                     code = line.strip()
                     break
         
-        # Correct column name case
         for col in df.columns:
             if col.lower() in code.lower():
                 code = code.replace(col.lower(), col)
         
         # Remove invalid characters
         code = code.replace('—', '-')  # Replace em dash with a regular dash
-        code = code.replace('‘', "'").replace('’', "'")  # Replace fancy quotes with regular quotes
+        code = code.replace('‘', "'").replace('’', "'")  
         
         print("\n--- Generated Code ---")
         print(code)
         print("----------------------\n")
         
-        # Add timeout to prevent infinite loops
         exec_globals = {
             "df": df, 
             "np": np, 
@@ -89,7 +81,6 @@ def interpret_and_execute(instruction: str, df: pd.DataFrame) -> tuple[str, str]
             }
         }
         
-        # Execute code based on operation type
         if 'plt' in code or 'sns' in code:
             # Handle plotting operations
             try:
@@ -118,7 +109,7 @@ def interpret_and_execute(instruction: str, df: pd.DataFrame) -> tuple[str, str]
                 return f"Error in statistical operation: {str(e)}", code
                 
         else:
-            # For other operations, try exec first, then eval if exec fails
+            # Other operations
             try:
                 exec(code, exec_globals)
                 return "Operation executed successfully.", code
@@ -154,3 +145,10 @@ def create_agent(df):
         handle_parsing_errors=True
     )
     return agent
+
+#This code is for the agent to execute the code and return the result
+#It is a zero shot agent that uses the deepseek-r1 model to generate the code
+#It then executes the code and returns the result
+#It uses the langchain library to create the agent
+#It uses the langchain.tools library to create the tools
+#It uses the langchain.agents library to create the agent

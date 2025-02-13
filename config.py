@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
 FEEDBACK_DIR = BASE_DIR / "feedback"
 
-# Create directories if they don't exist
+
 DATA_DIR.mkdir(exist_ok=True)
 FEEDBACK_DIR.mkdir(exist_ok=True)
 
