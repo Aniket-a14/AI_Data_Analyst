@@ -96,3 +96,29 @@ dmypy.json
 .env
 .env.local
 .env.*.local
+
+# Add these to your existing .gitignore
+*/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env/
+.venv/
+
+# Project specific
+feedback_data.json
+dataset/
+results/
+fine_tuned_model/
+.DS_Store
+.idea/
+.vscode/
+
+# Logs
+*.log
+*.log.*
+logs/
