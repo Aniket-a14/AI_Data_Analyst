@@ -59,5 +59,13 @@ MATPLOTLIB_EXAMPLES = [
     {
         "task": "create annotated heatmap",
         "code": "plt.imshow(df.corr())\nfor i in range(len(df.columns)):\n    for j in range(len(df.columns)):\n        plt.text(j, i, f\"{df.corr().iloc[i, j]:.2f}\", ha='center', va='center')"
+    },
+    {
+        "task": "create histogram of tips",
+        "code": "plt.hist(df['tip'])\nplt.title('Distribution of Tips')\nplt.xlabel('Tip Amount')\nplt.ylabel('Frequency')"
+    },
+    {
+        "task": "plot total_bill vs tip scatter",
+        "code": "plt.scatter(df['total_bill'], df['tip'])\nplt.xlabel('Total Bill')\nplt.ylabel('Tip')"
     }
 ] 

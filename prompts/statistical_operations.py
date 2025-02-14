@@ -53,5 +53,21 @@ STATISTICAL_EXAMPLES = [
     {
         "task": "calculate z-scores of tips",
         "code": "(df['tip'] - df['tip'].mean()) / df['tip'].std()"
+    },
+    {
+        "task": "calculate mean of total_bill",
+        "code": "df['total_bill'].mean()"
+    },
+    {
+        "task": "find sum of tips",
+        "code": "df['tip'].sum()"
+    },
+    {
+        "task": "get correlation between tip and total_bill",
+        "code": "df['tip'].corr(df['total_bill'])"
+    },
+    {
+        "task": "show summary statistics",
+        "code": "df.describe()"
     }
 ] 

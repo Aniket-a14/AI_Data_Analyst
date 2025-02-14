@@ -100,5 +100,13 @@ ADVANCED_EXAMPLES = [
     {
         "task": "encode ordinal categories",
         "code": "from sklearn.preprocessing import OrdinalEncoder\nord_enc = OrdinalEncoder()\ndf['day_encoded'] = ord_enc.fit_transform(df[['day']])"
+    },
+    {
+        "task": "calculate tip percentage",
+        "code": "df['tip_percent'] = (df['tip'] / df['total_bill']) * 100"
+    },
+    {
+        "task": "find average tip by gender and smoker",
+        "code": "df.groupby(['Gender', 'smoker'])['tip'].mean()"
     }
 ] 

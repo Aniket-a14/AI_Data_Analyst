@@ -11,8 +11,8 @@ SEABORN_EXAMPLES = [
     
     # Categorical Plots
     {
-        "task": "create box plot of tips by day",
-        "code": "sns.boxplot(data=df, x='day', y='tip')"
+        "task": "create boxplot of tips by day",
+        "code": "sns.boxplot(x='day', y='tip', data=df)"
     },
     {
         "task": "create violin plot with points",
@@ -91,5 +91,9 @@ SEABORN_EXAMPLES = [
     {
         "task": "create residual plot",
         "code": "sns.residplot(data=df, x='total_bill', y='tip', lowess=True)"
+    },
+    {
+        "task": "show tip distribution by time",
+        "code": "sns.violinplot(x='time', y='tip', data=df)"
     }
 ] 

@@ -26,6 +26,7 @@ def main():
                 print("\nAvailable commands:")
                 print("- exit: Quit the program")
                 print("- help: Show this help message")
+                print("- Any data analysis task using the columns:", df.columns.tolist())
                 continue
             
             print("\nProcessing your request...")
@@ -39,13 +40,20 @@ def main():
                 print("Please enter 'y' or 'n'")
                 
             if feedback in ['y', 'yes']:
-                feedback_store.add_example(instruction, code, True)
+                example = {
+                    "task": instruction,
+                    "code": code
+                }
+                feedback_store.add_example(example)
                 print("Great! Added to successful examples.")
             else:
-                feedback_store.add_example(instruction, code, False)
                 correct_code = input("What would be the correct code? (press enter to skip): ")
                 if correct_code.strip():
-                    feedback_store.add_example(instruction, correct_code, True)
+                    correct_example = {
+                        "task": instruction,
+                        "code": correct_code
+                    }
+                    feedback_store.add_example(correct_example)
                 print("Thank you for the feedback!")
                 
     except KeyboardInterrupt:

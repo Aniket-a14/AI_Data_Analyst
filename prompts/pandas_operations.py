@@ -23,7 +23,7 @@ PANDAS_EXAMPLES = [
 
     # Data Filtering
     {
-        "task": "filter tips greater than 5",
+        "task": "filter rows where tip is greater than 5",
         "code": "df[df['tip'] > 5]"
     },
     {
@@ -67,7 +67,7 @@ PANDAS_EXAMPLES = [
 
     # Grouping and Aggregation
     {
-        "task": "group by single column",
+        "task": "group by day and calculate mean tips",
         "code": "df.groupby('day')['tip'].mean()"
     },
     {
@@ -89,7 +89,7 @@ PANDAS_EXAMPLES = [
 
     # Sorting and Ranking
     {
-        "task": "sort by single column",
+        "task": "sort by total_bill descending",
         "code": "df.sort_values('total_bill', ascending=False)"
     },
     {
