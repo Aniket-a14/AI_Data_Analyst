@@ -134,5 +134,21 @@ BASIC_EXAMPLES = [
     {
         "task": "show data for weekend days",
         "code": "df[df['day'].isin(['Sat', 'Sun'])]"
+    },
+    {
+        "task": "show unique values in a column",
+        "code": "df['column'].unique()"
+    },
+    {
+        "task": "count value frequencies",
+        "code": "df['column'].value_counts()"
+    },
+    {
+        "task": "show sample of 5 random rows",
+        "code": "df.sample(5)"
+    },
+    {
+        "task": "show percentage of missing values",
+        "code": "df.isnull().mean() * 100"
     }
 ] 

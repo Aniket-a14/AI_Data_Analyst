@@ -95,5 +95,17 @@ SEABORN_EXAMPLES = [
     {
         "task": "show tip distribution by time",
         "code": "sns.violinplot(x='time', y='tip', data=df)"
+    },
+    {
+        "task": "create advanced facet grid",
+        "code": "g = sns.FacetGrid(df, col='day', row='time', hue='Gender', height=4)\ng.map_dataframe(sns.scatterplot, x='total_bill', y='tip')\ng.add_legend()"
+    },
+    {
+        "task": "create complex categorical plot",
+        "code": "sns.catplot(data=df, x='day', y='tip', col='time', kind='violin', inner='stick', split=True, hue='Gender', height=6)"
+    },
+    {
+        "task": "create advanced joint distribution",
+        "code": "g = sns.JointGrid(data=df, x='total_bill', y='tip', hue='Gender')\ng.plot_joint(sns.kdeplot, levels=5)\ng.plot_marginals(sns.histplot)\ng.add_legend()"
     }
 ] 

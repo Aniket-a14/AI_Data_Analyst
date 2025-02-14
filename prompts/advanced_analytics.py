@@ -108,5 +108,21 @@ ADVANCED_EXAMPLES = [
     {
         "task": "find average tip by gender and smoker",
         "code": "df.groupby(['Gender', 'smoker'])['tip'].mean()"
+    },
+    {
+        "task": "perform multivariate analysis",
+        "code": "from scipy import stats\nstats.multivariate_normal(mean=df[['tip', 'total_bill']].mean(), cov=df[['tip', 'total_bill']].cov())"
+    },
+    {
+        "task": "create custom aggregation pipeline",
+        "code": "df.groupby('day').agg({'tip': ['mean', 'std', lambda x: x.quantile(0.75)], 'total_bill': ['sum', 'count']})"
+    },
+    {
+        "task": "detect outliers using isolation forest",
+        "code": "from sklearn.ensemble import IsolationForest\niforest = IsolationForest(contamination=0.1)\ndf['outliers'] = iforest.fit_predict(df[['tip', 'total_bill']])"
+    },
+    {
+        "task": "create rolling correlation",
+        "code": "df['rolling_corr'] = df['tip'].rolling(window=10).corr(df['total_bill'])"
     }
 ] 

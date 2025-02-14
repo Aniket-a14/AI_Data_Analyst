@@ -197,5 +197,17 @@ PANDAS_EXAMPLES = [
     {
         "task": "calculate time difference",
         "code": "df['date_column'].diff().dt.days"
+    },
+    {
+        "task": "calculate percentage of total",
+        "code": "df['percentage'] = df['column'] / df['column'].sum() * 100"
+    },
+    {
+        "task": "create bins from continuous data",
+        "code": "df['bins'] = pd.qcut(df['column'], q=4, labels=['Q1', 'Q2', 'Q3', 'Q4'])"
+    },
+    {
+        "task": "pivot and unstack data",
+        "code": "df.pivot_table(values='value', index='row_category', columns='col_category', aggfunc='mean').unstack()"
     }
 ] 

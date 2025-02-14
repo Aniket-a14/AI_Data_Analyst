@@ -69,5 +69,21 @@ STATISTICAL_EXAMPLES = [
     {
         "task": "show summary statistics",
         "code": "df.describe()"
+    },
+    {
+        "task": "perform bootstrap analysis",
+        "code": "bootstrap_means = [df['tip'].sample(n=len(df), replace=True).mean() for _ in range(1000)]\npd.Series(bootstrap_means).describe()"
+    },
+    {
+        "task": "calculate moving average with exponential weights",
+        "code": "df['exp_weighted_avg'] = df['tip'].ewm(span=7, adjust=False).mean()"
+    },
+    {
+        "task": "perform multiple hypothesis testing",
+        "code": "from statsmodels.stats.multitest import multipletests\np_values = [stats.ttest_ind(group['tip'], df['tip']).pvalue for name, group in df.groupby('day')]"
+    },
+    {
+        "task": "calculate robust statistics",
+        "code": "from scipy.stats import trim_mean\n{'median': df['tip'].median(), 'trimmed_mean': trim_mean(df['tip'], 0.1), 'mad': stats.median_abs_deviation(df['tip'])}"
     }
 ] 

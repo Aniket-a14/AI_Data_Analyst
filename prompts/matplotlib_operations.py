@@ -67,5 +67,17 @@ MATPLOTLIB_EXAMPLES = [
     {
         "task": "plot total_bill vs tip scatter",
         "code": "plt.scatter(df['total_bill'], df['tip'])\nplt.xlabel('Total Bill')\nplt.ylabel('Tip')"
+    },
+    {
+        "task": "create multiple subplots",
+        "code": "fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\nax1.hist(df['column1'])\nax2.hist(df['column2'])\nplt.show()"
+    },
+    {
+        "task": "create box plot with grid",
+        "code": "plt.boxplot(df['column'])\nplt.grid(True, linestyle='--', alpha=0.7)\nplt.show()"
+    },
+    {
+        "task": "create plot with custom markers and colors",
+        "code": "plt.plot(df['x'], df['y'], 'ro--', linewidth=2, markersize=10)\nplt.show()"
     }
 ] 
