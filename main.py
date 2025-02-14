@@ -1,9 +1,12 @@
 from data_tools import load_dataset
 from agent import interpret_and_execute
 from feedback_store import FeedbackStore
+from agent_config import AGENT
+
 
 def main():
     try:
+        print(f"\nHi! I'm {AGENT.NAME}, your data analysis assistant.")
         file_path = input("Enter dataset file path (CSV): ")
         df = load_dataset(file_path)
         feedback_store = FeedbackStore()
@@ -12,14 +15,14 @@ def main():
             print(f"Error: {df}")
             return
         
-        print("\nDataset loaded successfully!")
+        print(f"\n{AGENT.NAME}: Dataset loaded successfully!")
         print(f"Shape of dataset: {df.shape}")
         print("\nColumns in dataset:")
         print(df.columns.tolist())
         print("\nType 'help' for available commands or 'exit' to quit.")
         
         while True:
-            instruction = input("\nDescribe your data analysis task: ").strip().lower()
+            instruction = input(f"\n{AGENT.NAME}: What data analysis task can I help you with? ").strip().lower()
             if instruction == 'exit':
                 break
             elif instruction == 'help':

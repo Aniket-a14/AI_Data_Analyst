@@ -49,6 +49,7 @@ feedback_data.json
 *.log
 logs/
 tmp/
+agent_config.py
 
 # Jupyter Notebook
 .ipynb_checkpoints
