@@ -49,6 +49,14 @@
     {
       "task": "show last 40 rows",
       "code": "df.iloc[-40:]"
+    },
+    {
+      "task": "show full dataset",
+      "code": "df.to_string()"
+    },
+    {
+      "task": "display first 10 rows",
+      "code": "df.head(10)"
     }
   ],
   "failed_examples": [
