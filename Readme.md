@@ -38,7 +38,7 @@ Wizard-w1/
 
    ```bash
    git clone https://github.com/Aniket-a14/Wizard-w1.git
-   cd Wizard_w1
+   cd Wizard-w1
    ```
 
 2. **Install the required dependencies:**
