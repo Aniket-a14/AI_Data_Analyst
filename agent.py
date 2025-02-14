@@ -52,7 +52,6 @@ def interpret_and_execute(instruction: str, df: pd.DataFrame) -> tuple[str, str]
 def process_code(code: str, df: pd.DataFrame, instruction: str = "") -> tuple[str, str]:
     """Process and execute the generated code"""
     try:
-        # Special handling for full dataset display
         if instruction and instruction.lower().strip() in ['show full dataset', 'show all data', 'display full dataset', 'show data']:
             pd.set_option('display.max_rows', None)
             pd.set_option('display.max_columns', None)
@@ -60,20 +59,16 @@ def process_code(code: str, df: pd.DataFrame, instruction: str = "") -> tuple[st
             pd.set_option('display.max_colwidth', None)
             return df.to_string(), "df.to_string()"
         
-        # Extract only the actual code
         code_lines = []
         for line in code.split('\n'):
             line = line.strip()
             
-            # Skip empty lines or lines with only special characters
             if not line or re.match(r'^[^a-zA-Z0-9_]+$', line):
                 continue
                 
-            # Skip if line contains natural language
             if is_natural_language(line):
                 continue
                 
-            # Keep if line looks like code
             if is_code_line(line):
                 code_lines.append(line)
         
@@ -125,7 +120,7 @@ def process_and_execute(code: str, df: pd.DataFrame) -> tuple[str, str]:
             plt.close()
             return "Plot generated successfully.", code
         elif code.strip().startswith('print'):
-            print_content = code.strip()[6:-1]  # Remove 'print(' and ')'
+            print_content = code.strip()[6:-1]  
             if print_content == 'df':
                 return df.to_string(), code
             else:
@@ -167,3 +162,4 @@ def create_agent(df):
 
 # This code creates an agent that uses deepseek-r1 with our curated examples
 # to generate and execute Python code for data analysis tasks
+# the code is based on the following article: https://medium.com/@josephroque/building-a-data-analysis-agent-with-langchain-and-ollama-2024-11-25-1e1441244e3e
