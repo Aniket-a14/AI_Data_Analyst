@@ -29,7 +29,7 @@ AI_Data_Analyst/
 ├── main.py                    # Main execution loop for the application
 ├── requirements.txt           # List of required Python dependencies
 ├── test.py                    # Script for testing functionality
-└── train.py                   # Script for training or refining the agent using feedback
+└── train.py                   #  optional: Script for training or refining the agent using feedback
 ```
 
 ## Installation
