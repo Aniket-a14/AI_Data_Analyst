@@ -67,6 +67,16 @@ AI_Data_Analyst/
    - The generated code is executed, and the result (or plot) is displayed.
    - Provide feedback on whether the output was correct. If not, you can optionally supply the correct code to improve future performance.
 
+## GitHub Actions CI Workflow
+This repository includes an **automated CI workflow** using **GitHub Actions**. The workflow is defined in `.github/workflows/python-ci.yml` and performs the following tasks:
+- Checks out the repository.
+- Sets up Python 3.9.
+- Installs dependencies from `requirements.txt`.
+- Runs linting with **Flake8**.
+- Runs tests using **PyTest**.
+
+To enable CI, ensure the file `.github/workflows/python-ci.yml` exists and push changes to `main`.
+
 ## Contributing
 
 Contributions are welcome! If you have ideas for improvements or new features, please consider:
