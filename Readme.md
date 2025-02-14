@@ -1,6 +1,6 @@
-# AI Data Analyst
+# Wizard-w1
 
-AI Data Analyst is a Python-based project that leverages an AI agent to interpret natural language data analysis tasks and execute them on a CSV dataset. The project uses LangChain alongside Ollama’s ChatOllama interface (with the deepseek‑r1 model by default) to dynamically generate and run Python code for data analysis. User feedback is collected to help improve the system over time.
+Wizard-w1 is a AI Data Analyst which is a Python-based project that leverages an AI agent to interpret natural language data analysis tasks and execute them on a CSV dataset. The project uses LangChain alongside Ollama’s ChatOllama interface (with the deepseek‑r1 model by default) to dynamically generate and run Python code for data analysis. User feedback is collected to help improve the system over time.
 
 ## Features
 
