@@ -15,7 +15,7 @@ Wizard-w1 is a AI Data Analyst which is a Python-based project that leverages an
 Below is a breakdown of the repository's structure:
 
 ```plaintext
-AI_Data_Analyst/
+Wizard-w1/
 ├── __pycache__/                # Cached Python files
 ├── dataset/                   # Folder containing sample or generated datasets
 ├── prompts/                   # Contains prompt templates for the AI model
@@ -37,8 +37,8 @@ AI_Data_Analyst/
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Aniket-a14/AI_Data_Analyst.git
-   cd AI_Data_Analyst
+   git clone https://github.com/Aniket-a14/Wizard-w1.git
+   cd Wizard_w1
    ```
 
 2. **Install the required dependencies:**
