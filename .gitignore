@@ -1,29 +1,98 @@
-fine_tuned_model
-results
-*.pyc
-*.pyo
-*.pyd
-*.pyw
-*.pyz
-*.pywz
-__pycache__
-*.pyc~
-*.pyo~
-*.pyd~
-*.pyw~
-*.pyz~
-*.pywz~
-prompts/_
-prompts/prompts.txt
-prompts/prompts.json
-prompts/prompts.yaml
-prompts/prompts.yml
-prompts/prompts.ini
-prompts/prompts.cfg
+# Python
+fine_tuned_model/
+results/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Project specific
+fine_tuned_model/
+results/
+feedback_data.json
 *.log
-*.log.*
-*.log.*.*
-*.log.*.*.*
-*.log.*.*.*.*
-*.log.*.*.*.*.*
+logs/
+tmp/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation
+docs/_build/
+site/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Environments
+.env
+.env.local
+.env.*.local
