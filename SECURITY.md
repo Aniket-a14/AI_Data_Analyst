@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in **AI\_Data\_Analyst**, please report it responsibly by following these steps:
+If you discover a security vulnerability in **Wizard-w1**, please report it responsibly by following these steps:
 
 1. **Do not** disclose the issue publicly until it is resolved.
 2. Create a **private issue** on GitHub (if applicable) or email the project maintainers.
