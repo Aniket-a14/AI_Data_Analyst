@@ -57,6 +57,10 @@
     {
       "task": "display first 10 rows",
       "code": "df.head(10)"
+    },
+    {
+      "task": "give sum of first 10 rows of total_bill columns",
+      "code": "df['total_bill'].head(10).sum()"
     }
   ],
   "failed_examples": [
