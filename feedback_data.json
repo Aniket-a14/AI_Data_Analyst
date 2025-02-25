@@ -61,6 +61,18 @@
     {
       "task": "give sum of first 10 rows of total_bill columns",
       "code": "df['total_bill'].head(10).sum()"
+    },
+    {
+      "task": "give sum of first 10 rows of the column total_bills",
+      "code": "df.head(10)['total_bill'].sum()"
+    },
+    {
+      "task": "give sum of first 10 rows of the column total_bills",
+      "code": "print(df['total_bills'].iloc[:10].sum())"
+    },
+    {
+      "task": "give sum of first 10 rows of the column total_bill",
+      "code": "df['total_bill'].iloc[:10].sum()"
     }
   ],
   "failed_examples": [
